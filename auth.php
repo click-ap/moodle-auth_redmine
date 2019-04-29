@@ -122,7 +122,7 @@ class auth_plugin_redmine extends auth_plugin_base {
             } else if ($this->config->passtype === 'md5') {
                 return (strtolower($fromdb) == md5($extpassword));
             } else if ($this->config->passtype === 'sha1') {
-                return (strtolower($fromdb) == sha1($salt + sha1($extpassword)));
+                return (strtolower($fromdb) == sha1($salt . sha1($extpassword)));
             } else if ($this->config->passtype === 'saltedcrypt') {
                 return password_verify($extpassword, $fromdb);
             } else {
