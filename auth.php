@@ -99,7 +99,7 @@ class auth_plugin_redmine extends auth_plugin_base {
 
             $rs = $authdb->Execute("SELECT {$this->config->fieldpass}, salt
                                       FROM {$this->config->table}
-                                     WHERE {$this->config->fielduser} = '".$this->ext_addslashes($extusername)."'");
+                                     WHERE status <> 3 And {$this->config->fielduser} = '".$this->ext_addslashes($extusername)."'");
             if (!$rs) {
                 $authdb->Close();
                 debugging(get_string('auth_redminecantconnect','auth_redmine'));
